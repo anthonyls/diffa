@@ -34,7 +34,7 @@ libraryDependencies ++= {
     "org.hibernate" % "hibernate-core" % hibernateVersion,
     "org.slf4j" % "slf4j-api" % slf4jVersion,
     "org.slf4j" % "jcl-over-slf4j" % slf4jVersion,
-    "org.springframework" % "spring-core" % "3.1.0.RELEASE" exclude("commons-logging", "commons-logging"),
+    "org.springframework" % "spring-core" % springRelease exclude("commons-logging", "commons-logging"),
     "org.springframework" % "spring-web" % springRelease,
     "org.springframework" % "spring-aop" % springRelease,
     "org.springframework" % "spring-orm" % springRelease,
