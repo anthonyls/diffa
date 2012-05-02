@@ -22,6 +22,8 @@
 * [123] - Matched entities are now updated in caches immediately
 * [124] - Replacement mechanism for caching results of aggregation.
 * [127] - Support for infinite panning on the heatmap
+* [133] - Fixed race condition in Pair registration.
+* [141] - Fixed timeout issue in Pair creation resulting from [133].
 
 ## Library Upgrades
 
