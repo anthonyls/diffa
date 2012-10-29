@@ -18,6 +18,7 @@ package net.lshift.diffa.agent.util
 
 import org.springframework.beans.factory.FactoryBean
 import java.util.Properties
+import org.hibernate.cfg.Environment
 
 /**
  * Factory for creating the configuration to run Hibernate. Abstracted since we'd like
@@ -28,6 +29,7 @@ class HibernatePropertiesFactory(dialect:String)
     extends FactoryBean[Properties] {
   private val props = new Properties
   props.setProperty("hibernate.dialect", dialect)
+  props.setProperty(Environment.USER, System.getProperty("diffa.jdbc.username"))
   def isSingleton = true
   def getObjectType = classOf[Properties]
   def getObject = props
