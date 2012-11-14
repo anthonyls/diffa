@@ -153,6 +153,19 @@ class WindowRefinerTest {
       intersection, (refinement.getStartAs(DateTimeType.DATETIME), refinement.getEndAs(DateTimeType.DATETIME)))
   }
 
+  @Test
+  def refinementOfUnboundedRangeToPeriodWithNegativeOffsetShouldYieldHistoricalPeriod() {
+    val now = startOfDay plusHours 23
+    val (start, end) = (null, null)
+    val expectedRefinement: (String, String) = (startOfDay minusYears 4, startOfDay minusYears 1)
+    val refiner = WindowRefiner.forPeriodExpression("P3Y").withOffset("P-1Y").usingTime(now)
+
+    val refinement = refiner.refineInterval(start, end)
+
+    Assert.assertEquals("Refinement of unbounded range to period with negative offset should be a date range in the past",
+      expectedRefinement, (refinement.getStartAs(DateTimeType.DATETIME), refinement.getEndAs(DateTimeType.DATETIME)))
+  }
+
   private def daysAgo(days: Int) =
     now.toDateMidnight().minusDays(days).toDateTime().toString(dateTimeFormatter)
 
